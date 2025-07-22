@@ -24,3 +24,18 @@ These data are reused by various widely used opensource projects, among which Wi
 ### License 
 MIT License for code.<br>
 CC-by-sa-4.0 for content.
+
+## Chat Sentiment App
+
+The `chat-sentiment-app` folder contains a simple realtime chat application with sentiment analysis.
+It uses Node.js, Express and Socket.IO. Messages are analyzed with the `sentiment` package and displayed with color cues.
+
+### Running
+
+```bash
+cd chat-sentiment-app
+npm install
+node server.js
+```
+
+Visit `http://localhost:3000` in a browser, choose a nickname and start chatting.
