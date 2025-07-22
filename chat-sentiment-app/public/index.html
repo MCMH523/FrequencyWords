@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat with Sentiment</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="login" class="overlay">
+    <input id="nickname" placeholder="Nickname" />
+    <button id="enter">Enter Chat</button>
+  </div>
+
+  <div id="chat" class="hidden">
+    <div id="stats"></div>
+    <div id="messages"></div>
+    <input id="message" placeholder="Type a message" autocomplete="off" />
+    <button id="send">Send</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>
