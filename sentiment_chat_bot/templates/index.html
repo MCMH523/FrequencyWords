@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Sentiment Chat Bot</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #chat { border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: scroll; }
+        .message { margin-bottom: 10px; }
+        .positive { color: green; }
+        .negative { color: red; }
+        .neutral { color: gray; }
+    </style>
+</head>
+<body>
+    <h1>Real-time Sentiment Chat Bot</h1>
+    <div id="chat">
+        {% for item in history %}
+        <div class="message {{ item.mood }}">
+            <strong>You:</strong> {{ item.text }} {{ item.emoji }}<br/>
+            <em>Bot:</em> {{ item.response }}
+        </div>
+        {% endfor %}
+    </div>
+    <input type="text" id="userInput" placeholder="Type your message" style="width:80%"/>
+    <button onclick="send()">Send</button>
+
+    <script>
+    async function send() {
+        const text = document.getElementById('userInput').value;
+        if (!text) return;
+        const response = await fetch('/analyze', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text })
+        });
+        const data = await response.json();
+        const div = document.createElement('div');
+        div.className = 'message ' + data.mood;
+        div.innerHTML = `<strong>You:</strong> ${text} ${data.emoji}<br/><em>Bot:</em> ${data.response}`;
+        document.getElementById('chat').appendChild(div);
+        document.getElementById('userInput').value = '';
+        document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
+    }
+    </script>
+</body>
+</html>
