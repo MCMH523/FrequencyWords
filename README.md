@@ -24,3 +24,19 @@ These data are reused by various widely used opensource projects, among which Wi
 ### License 
 MIT License for code.<br>
 CC-by-sa-4.0 for content.
+
+## Sentiment Chat Bot
+
+A simple real-time sentiment analysis chat bot is included in `sentiment_chat_bot`.
+It uses Flask and the `vaderSentiment` library to analyze user messages.
+
+### Usage
+1. Install dependencies:
+   ```bash
+   pip install Flask vaderSentiment
+   ```
+2. Run the application:
+   ```bash
+   python3 sentiment_chat_bot/app.py
+   ```
+3. Open your browser at `http://localhost:5000` and start chatting. Messages are saved to `chat_history.json`.
